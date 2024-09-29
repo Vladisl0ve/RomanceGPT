@@ -38,6 +38,10 @@
   background-color: #FFF;
 }
 
+.message-botTyping {
+  align-self: flex-start;
+}
+
 .inputContainer {
   display: flex;
   margin-top: 10px;

@@ -50,6 +50,7 @@ const Chat: React.FC = () => {
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
+      await new Promise( res => setTimeout(res, 10000) );
       setLoading(false);
     }
   };
@@ -72,78 +73,25 @@ const Chat: React.FC = () => {
           </div>
         ))}
         {loading && (
-          <div style={{ ...styles.message, alignSelf: 'flex-start' }}>
+          <div className={`message message-botTyping`}>
             Bot is typing...
           </div>
         )}
       </div>
-      <div style={styles.inputContainer}>
-        <input
+      <div className='inputContainer'>
+        <input className='input'
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-          style={styles.input}
+          onKeyDown={handleKeyPress}
           placeholder="Type your message..."
         />
-        <button onClick={handleSend} style={styles.button} disabled={loading}>
+        <button className='butto' onClick={handleSend} disabled={loading}>
           Send
         </button>
       </div>
     </div>
   );
 };
-
-const styles: { [key: string]: React.CSSProperties } = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '70vh',
-    maxWidth: '600px',
-    margin: '0 auto',
-    padding: '20px',
-    boxSizing: 'border-box',
-    textAlign: 'center'
-  },
-  chatWindow: {
-    flex: 1,
-    padding: '10px',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    overflowY: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    backgroundColor: '#f9f9f9',
-  },
-  message: {
-    maxWidth: '80%',
-    padding: '10px',
-    borderRadius: '10px',
-    boxShadow: '0 1px 1px rgba(0,0,0,0.1)',
-  },
-  inputContainer: {
-    display: 'flex',
-    marginTop: '10px',
-  },
-  input: {
-    flex: 1,
-    padding: '10px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    marginRight: '10px',
-    fontSize: '16px',
-  },
-  button: {
-    padding: '10px 20px',
-    borderRadius: '5px',
-    border: 'none',
-    backgroundColor: '#007BFF',
-    color: '#fff',
-    fontSize: '16px',
-    cursor: 'pointer',
-  },
-};
-
 
 export default Chat;
