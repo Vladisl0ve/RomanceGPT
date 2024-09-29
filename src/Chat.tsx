@@ -86,7 +86,7 @@ const Chat: React.FC = () => {
           onKeyDown={handleKeyPress}
           placeholder="Type your message..."
         />
-        <button className='butto' onClick={handleSend} disabled={loading}>
+        <button className='button' onClick={handleSend} disabled={loading}>
           Send
         </button>
       </div>
