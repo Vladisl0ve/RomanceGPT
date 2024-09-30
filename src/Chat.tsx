@@ -14,7 +14,7 @@ const Chat: React.FC = () => {
    const handleSend = async () => {
       if (input.trim() === "") return;
 
-      const userMessage: MessageProps = { sender: Senders.User, text: input };
+      const userMessage: MessageProps = { sender: Senders.User, text: input, timeSent: new Date() };
       setMessages((prev) => [...prev, userMessage]);
       setInput("");
       setLoading(true);
@@ -39,6 +39,7 @@ const Chat: React.FC = () => {
          const botMessage: MessageProps = {
             sender: Senders.Bot,
             text: response.data.choices[0].message.content.trim(),
+            timeSent: new Date()
          };
          setMessages((prev) => [...prev, botMessage]);
       } catch (error) {
@@ -46,6 +47,7 @@ const Chat: React.FC = () => {
          const errorMessage: MessageProps = {
             sender: Senders.Bot,
             text: "Sorry, there was an error processing your request.",
+            timeSent: new Date()
          };
          setMessages((prev) => [...prev, errorMessage]);
       } finally {
@@ -64,7 +66,7 @@ const Chat: React.FC = () => {
       <div className="container">
          <div className="chatWindow">
             {messages.map((msg, index) => (
-               <Message sender={msg.sender} text={msg.text}></Message>
+               <Message sender={msg.sender} text={msg.text} timeSent={msg.timeSent}></Message>
             ))}
             {loading && (
                <div className={`message message-botTyping`}>

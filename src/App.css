@@ -49,11 +49,13 @@
 .message-user {
   align-self: flex-end;
   background-color: #DCF8C6;
+  text-align: right;
 }
 
 .message-bot {
   align-self: flex-start;
   background-color: #FFF;
+  text-align: left;
 }
 
 .message-botTyping {
@@ -70,6 +72,12 @@
   border: 2px solid #ddd;    /* Optional: Add a border to the avatar */
   margin-right: 8px;         /* Space between the avatar and the message text */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);  /* Add a slight shadow for depth */
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 4px;
 }
 
 .inputContainer {
