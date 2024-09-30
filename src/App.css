@@ -60,6 +60,18 @@
   align-self: flex-start;
 }
 
+.img-message-avatar {
+  width: 40px;               /* Set the size of the avatar */
+  height: 40px;              /* Maintain a square shape */
+  border-radius: 50%;        /* Make it a circle */
+  overflow: hidden;          /* Ensure content stays within the bounds */
+  object-fit: cover;         /* Ensure the image is properly scaled */
+  display: inline-block;     /* Allows it to be placed inline with text */
+  border: 2px solid #ddd;    /* Optional: Add a border to the avatar */
+  margin-right: 8px;         /* Space between the avatar and the message text */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);  /* Add a slight shadow for depth */
+}
+
 .inputContainer {
   display: flex;
   margin-top: 10px;
